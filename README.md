@@ -5,7 +5,7 @@ Laravel Mix extension to compile Twig templates to HTML
 ## Install
 
 ```bash
-npm install laravel-mix-twig --save-dev
+npm install @webrgp/laravel-mix-twig --save-dev
 ```
 
 ## Features
