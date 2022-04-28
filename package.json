@@ -1,5 +1,5 @@
 {
-  "name": "laravel-mix-twig",
+  "name": "@webrgp/laravel-mix-twig",
   "version": "1.0.0",
   "description": "A Laravel Mix extension to convert twig files to html",
   "author": "Rodrigo Passos <rodrigo@hellodative.com> (https://hellodative.com)",
