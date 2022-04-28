@@ -19,9 +19,9 @@ This extension performs following tasks
 
 ```javascript
 const mix = require('laravel-mix')
-require('laravel-mix-twig')
+require('@webrgp/laravel-mix-twig')
 
-mix.twig('src/templates/', 'public/', {
+mix.twig('src/templates', 'public', {
   // data: {},
   // debug: false,
   // trace: false,
