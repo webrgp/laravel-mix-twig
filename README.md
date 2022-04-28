@@ -28,7 +28,7 @@ mix.twig('src/templates/', 'public/', {
 })
 ```
 
-- `data` - Data passed to template
+- `data` - Global data passed to all templates
 - `debug` - [true|false] enables debug info logging (defaults to false)
 - `trace` - [true|false] enables tracing info logging (defaults to false)
 
