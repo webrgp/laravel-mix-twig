@@ -16,9 +16,9 @@
     "README.md"
   ],
   "scripts": {
-    "test": "mix",
-    "test:watch": "mix watch",
-    "test:poll": "mix watch --watch-options-poll=1000"
+    "build": "mix",
+    "dev": "mix watch",
+    "dev:poll": "mix watch --watch-options-poll=1000"
   },
   "dependencies": {
     "chokidar": "^3.5.3",
