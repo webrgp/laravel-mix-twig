@@ -1,9 +1,20 @@
 {
   "name": "@webrgp/laravel-mix-twig",
   "version": "1.0.0",
+  "license": "ISC",
   "description": "A Laravel Mix extension to convert twig files to html",
-  "author": "Rodrigo Passos <rodrigo@hellodative.com> (https://hellodative.com)",
-  "license": "MIT",
+  "author": "Rodrigo Passos <rodrigopassos@mac.com> (https://hellodative.com)",
+  "engines": {
+    "node": ">=12.14.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webrgp/laravel-mix-twig.git"
+  },
+  "bugs": {
+    "url": "https://github.com/webrgp/laravel-mix-twig/issues"
+  },
+  "homepage": "https://github.com/webrgp/laravel-mix-twig",
   "keywords": [
     "laravel",
     "mix",
@@ -30,8 +41,5 @@
   },
   "peerDependencies": {
     "laravel-mix": "^6.0.0"
-  },
-  "engines": {
-    "node": ">=12.14.0"
   }
 }
