@@ -1,5 +1,7 @@
 # laravel-mix-twig
 
+[![npm](https://img.shields.io/npm/v/@webrgp/laravel-mix-twig)](https://www.npmjs.com/package/@webrgp/laravel-mix-twig) [![npm](https://img.shields.io/npm/dm/@webrgp/laravel-mix-twig)](https://www.npmjs.com/package/@webrgp/laravel-mix-twig) [![GitHub issues](https://img.shields.io/github/issues/webrgp/laravel-mix-twig)](https://github.com/webrgp/laravel-mix-twig/issues) [![GitHub license](https://img.shields.io/github/license/webrgp/laravel-mix-twig)](https://github.com/webrgp/laravel-mix-twig/blob/main/LICENSE)
+
 Laravel Mix extension to compile Twig templates to HTML
 
 ## Install
