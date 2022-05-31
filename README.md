@@ -155,6 +155,16 @@ mix.twig('src/templates', 'public', {
 
 Custom tags can be added through `{ extend: [ function(Twig) ] }` where the Twig argument is Twig.js's internal object. [Read more here](https://github.com/twigjs/twig.js/wiki/Extending-twig.js-With-Custom-Tags).
 
+### Formatting
+
+You can format the rendered output by passing the `format` option with either `minify`, `pretty` or `unstyled` (default).
+
+```js
+mix.twig('src/templates', 'public', {
+  format: 'minify'
+})
+```
+
 ## Built in helpers
 
 For pratical purposes, I've included the following custom functions and filters that can be overwritten using the `functions` and `filters` options.

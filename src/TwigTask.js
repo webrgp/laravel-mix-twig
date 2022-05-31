@@ -2,7 +2,7 @@
  * @Author: webrgp
  * @Date: 2022-04-28 09:59:20
  * @Last Modified by: webrgp
- * @Last Modified time: 2022-05-31 12:36:07
+ * @Last Modified time: 2022-05-31 13:12:39
  */
 
 const globby = require('globby')
@@ -21,7 +21,8 @@ class TwigTask {
     this.options = options
     this.from = new File(options.from)
     this.to = new File(options.to)
-    const { data, base, functions, filters, extend, ...rest } = options.options
+    const { data, base, functions, filters, extend, format, ...rest } =
+      options.options
     this.twigOptions = Object.assign(
       {
         base: this.from.relativePath(),
@@ -76,6 +77,51 @@ class TwigTask {
     }
 
     this.compiler.cache(false)
+
+    this.configFormatter(format)
+  }
+
+  configFormatter(format = 'pretty') {
+    if (format === 'minify') {
+      this.formatter = require('html-minifier').minify
+      this.formatterOptions = {
+        caseSensitive: true,
+        collapseWhitespace: true,
+        removeComments: true,
+        continueOnParseError: true,
+        minifyCSS: true,
+        minifyJS: true
+      }
+
+      return
+    }
+
+    if (format === 'pretty') {
+      this.formatter = require('js-beautify').html
+      this.formatterOptions = {
+        indent_size: '2',
+        indent_char: ' ',
+        max_preserve_newlines: '2',
+        preserve_newlines: true,
+        keep_array_indentation: false,
+        break_chained_methods: false,
+        indent_scripts: 'keep',
+        brace_style: 'collapse',
+        space_before_conditional: true,
+        unescape_strings: false,
+        jslint_happy: false,
+        end_with_newline: false,
+        wrap_line_length: '0',
+        indent_inner_html: false,
+        comma_first: false,
+        e4x: false,
+        indent_empty_lines: false
+      }
+      return
+    }
+
+    this.formatter = (str, obj) => str
+    this.formatterOptions = {}
   }
 
   run() {
@@ -143,7 +189,10 @@ class TwigTask {
         path: srcFile.path()
       })
       const tpl = this.compiler.twig(options)
-      const rendered = tpl.render(this.data)
+      let rendered = tpl.render(this.data)
+
+      rendered = this.formatter(rendered, this.formatterOptions)
+
       distFile.makeDirectories()
       distFile.write(rendered)
     } catch (e) {
