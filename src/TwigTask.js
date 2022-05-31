@@ -2,7 +2,7 @@
  * @Author: webrgp
  * @Date: 2022-04-28 09:59:20
  * @Last Modified by: webrgp
- * @Last Modified time: 2022-04-28 09:59:45
+ * @Last Modified time: 2022-05-31 12:36:07
  */
 
 const globby = require('globby')
@@ -21,7 +21,7 @@ class TwigTask {
     this.options = options
     this.from = new File(options.from)
     this.to = new File(options.to)
-    const { data, ...rest } = options.options
+    const { data, base, functions, filters, extend, ...rest } = options.options
     this.twigOptions = Object.assign(
       {
         base: this.from.relativePath(),
@@ -47,6 +47,33 @@ class TwigTask {
       const assets = Mix.manifest.get()
       return assets[file] || file
     })
+
+    // Add custom functions
+    if (functions?.length > 0) {
+      functions.forEach(func => {
+        const [name, callback] = func
+        if (name && callback) {
+          this.compiler.extendFunction(name, callback)
+        }
+      })
+    }
+
+    // Add custom filters
+    if (filters?.length > 0) {
+      filters.forEach(filter => {
+        const [name, callback] = filter
+        if (name && callback) {
+          this.compiler.extendFilter(name, callback)
+        }
+      })
+    }
+
+    // Add custom tags
+    if (extend?.length > 0) {
+      extend.forEach(func => {
+        this.compiler.extend(func)
+      })
+    }
 
     this.compiler.cache(false)
   }
